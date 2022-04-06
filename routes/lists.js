@@ -22,6 +22,23 @@ router.post("/", verify, async (req, res) => {
     }
 })
 
+//delete
+router.delete("/:id", verify, async (req, res) => {
+    //verify by using only token
+
+    if (req.user.isAdmin) {
+
+        try {
+            await List.findByIdAndDelete(req.params.id);
+            res.status(201).json("The list has been deleted");
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    } else {
+        res.status(403).json("You are not allowed!!!")
+    }
+})
+
 
 
 module.exports = router;
