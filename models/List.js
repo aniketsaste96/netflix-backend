@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const ListSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: [true, "username is required"],
+        required: [true, "title is required"],
         unique: true
     },
     type: {

@@ -10,7 +10,7 @@ router.post("/", verify, async (req, res) => {
     //verify by using only token
 
     if (req.user.isAdmin) {
-        const newList = new Movie(req.body);
+        const newList = new List(req.body);
         try {
             const savedList = await newList.save();
             res.status(201).json(savedList);
