@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const MovieSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: [true, "username is required"],
+        required: [true, "title is required"],
         unique: true
     },
     desc: {
@@ -34,7 +34,7 @@ const MovieSchema = new mongoose.Schema({
     year: { type: String },
     limit: { type: Number },
     genre: { type: String },
-    isSeries: { type: Boolean, default: "" }
+    isSeries: { type: Boolean, default: false }
 
 },
     { timestamps: true }
