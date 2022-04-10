@@ -72,27 +72,21 @@ router.get("/find/:id", async (req, res) => {
 
 })
 //getall users(only admin)
-
 router.get("/", verify, async (req, res) => {
-    //verify by using only token
     const query = req.query.new;
-
     if (req.user.isAdmin) {
-
-        //sort({ _id: -1 }) fetch latest data // 1 for old
         try {
-            const users = query ? await User.find().sort({ _id: -1 }).limit(10) : await User.find()
-            res.status(200).json(users)
-        } catch (error) {
-            res.status(500).json(error)
-
+            const users = query
+                ? await User.find().sort({ _id: -1 }).limit(10)
+                : await User.find();
+            res.status(200).json(users);
+        } catch (err) {
+            res.status(500).json(err);
         }
     } else {
-        res.status(403).json("You are not allowed to see all users!!!")
+        res.status(403).json("You are not allowed to see all users!");
     }
-
-
-})
+});
 //user Stats
 router.get("/stats", async (req, res) => {
     const today = new Date();
