@@ -12,10 +12,10 @@ const listRoute = require("./routes/lists")
 
 
 
-app.use("*", cors());
+
 
 dotenv.config();
-
+app.use(cors());
 
 //mongodb connection
 mongoose.connect(process.env.MONGO_URL, {
