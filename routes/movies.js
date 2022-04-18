@@ -120,7 +120,7 @@ router.get("/random", verify, async (req, res) => {
 router.get("/", verify, async (req, res) => {
     //verify by using only token
 
-    if (req.user.isAdmin) {
+    if (req.user.isAdmin === true) {
         try {
             const movies = await Movie.find()
             res.status(200).json(movies.reverse());
