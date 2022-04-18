@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGO_URL, {
 }).then(() => console.log("mongodb connected 🔥")).catch((error) => console.log(error))
 
 
-
+const PORT = process.env.PORT || 8800
 
 app.use(express.json());
 
@@ -40,6 +40,7 @@ app.use("/api/lists", listRoute);
 
 
 
-app.listen(8800, () => {
-    console.log(`server is running on ${8800}💻`)
+app.listen(PORT, () => {
+    console.log(`server is running on ${PORT
+        }💻`)
 })
